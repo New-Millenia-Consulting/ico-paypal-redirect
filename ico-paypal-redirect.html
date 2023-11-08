@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate</title>
+</head>
+<body>
+    <h2>Donate<span class="h-line"></span></h2>
+
+    <script>
+        // Function to extract URL parameters by name
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Get the "action" URL parameter
+        var action = getUrlParameter('action');
+
+        // Define variables for PayPal URLs
+        var constructionUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=info@icorlando.org&item_name=Construction+Fund&no_shipping=1&return=http://www.icorlando.org/donate/thank-you-paypal.php&cancel_return=http://www.icorlando.org/donate/&tax=0&lc=US&bn=PP-DonationsBF';
+        var masjidUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate@icorlando.org&item_name=Masjid+Expense+Fund&no_shipping=1&return=http://www.icorlando.org/donate/thank-you-paypal.php&cancel_return=http://www.icorlando.org/donate/&tax=0&lc=US&bn=PP-DonationsBF';
+        var zakatUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=zakat@icorlando.org&item_name=Zakat+Fund&no_shipping=1&return=http://www.icorlando.org/donate/thank-you-paypal.php&cancel_return=http://www.icorlando.org/donate/&tax=0&lc=US&bn=PP-DonationsBF';
+        var sadaqahUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sadaqah@icorlando.org&item_name=Sadaqah+Fund&no_shipping=1&return=http://www.icorlando.org/donate/thank-you-paypal.php&cancel_return=http://www.icorlando.org/donate/&tax=0&lc=US&bn=PP-DonationsBF';
+
+        // Redirect to the corresponding form based on the "action" parameter
+        if (action === 'construction') {
+            window.location.href = constructionUrl;
+        } else if (action === 'masjid') {
+            window.location.href = masjidUrl;
+        } else if (action === 'zakat') {
+            window.location.href = zakatUrl;
+        } else if (action === 'sadaqah') {
+            window.location.href = sadaqahUrl;
+		}
+        // } else {
+        //     // Default to the construction URL if the action is not recognized
+        //     window.location.href = constructionUrl;
+        // }
+        // Add more conditions for other funds as needed
+    </script>
+</body>
+</html>
